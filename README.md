@@ -1,7 +1,4 @@
-# Single-Family Tech Services Support Readiness Kit
-
-## Overview
-This toolkit is designed for the **Single Family Marketing Engagement – Technology Services – Associate** role at Fannie Mae. It provides essential resources for ticket monitoring, troubleshooting, RCA, documentation, and support operations.
+# Tech Services Support Readiness Kit
 
 ## Project Structure
 ```

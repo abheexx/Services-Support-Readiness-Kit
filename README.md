@@ -47,5 +47,3 @@ Kit/
 - Jira workflow for SDLC and escalation processes
 - Technology manager onboarding procedures
 
----
-*Generated for Fannie Mae Single Family Technology Services Support*

@@ -1,0 +1,414 @@
+{
+  "name": "Single Family Technology Services - Support Workflow",
+  "description": "Kanban workflow for Single Family Technology Services support tickets and incidents",
+  "version": "1.0",
+  "created": "2024-12-19",
+  "project": "SF-TECH-SUPPORT",
+  "workflow": {
+    "name": "SF Tech Support Workflow",
+    "description": "Comprehensive workflow for handling Single Family Technology Services support requests",
+    "statuses": [
+      {
+        "id": "new",
+        "name": "New",
+        "description": "New ticket created, awaiting initial review",
+        "category": "TODO",
+        "color": "#007ACC",
+        "icon": "new",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": true,
+          "allowComment": true,
+          "notifyAssignee": true
+        }
+      },
+      {
+        "id": "in_progress",
+        "name": "In Progress",
+        "description": "Ticket is being actively worked on",
+        "category": "IN_PROGRESS",
+        "color": "#FF9500",
+        "icon": "in_progress",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": true,
+          "allowComment": true,
+          "notifyAssignee": true,
+          "requireTimeTracking": true
+        }
+      },
+      {
+        "id": "rca",
+        "name": "RCA",
+        "description": "Root Cause Analysis in progress",
+        "category": "IN_PROGRESS",
+        "color": "#FF6B6B",
+        "icon": "analysis",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": true,
+          "allowComment": true,
+          "notifyAssignee": true,
+          "requireTimeTracking": true,
+          "requireRCAFields": true
+        }
+      },
+      {
+        "id": "kb_update",
+        "name": "KB Update",
+        "description": "Updating knowledge base with resolution details",
+        "category": "IN_PROGRESS",
+        "color": "#4ECDC4",
+        "icon": "documentation",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": true,
+          "allowComment": true,
+          "notifyAssignee": true,
+          "requireKBUpdate": true
+        }
+      },
+      {
+        "id": "resolved",
+        "name": "Resolved",
+        "description": "Issue resolved, awaiting user confirmation",
+        "category": "DONE",
+        "color": "#45B7D1",
+        "icon": "resolved",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": false,
+          "allowComment": true,
+          "notifyAssignee": false,
+          "requireResolutionDetails": true
+        }
+      },
+      {
+        "id": "closed",
+        "name": "Closed",
+        "description": "Ticket closed and archived",
+        "category": "DONE",
+        "color": "#96CEB4",
+        "icon": "closed",
+        "properties": {
+          "allowTransition": false,
+          "allowEdit": false,
+          "allowComment": false,
+          "notifyAssignee": false
+        }
+      },
+      {
+        "id": "escalated",
+        "name": "Escalated",
+        "description": "Ticket escalated to higher level support",
+        "category": "IN_PROGRESS",
+        "color": "#FF4757",
+        "icon": "escalated",
+        "properties": {
+          "allowTransition": true,
+          "allowEdit": true,
+          "allowComment": true,
+          "notifyAssignee": true,
+          "requireEscalationReason": true,
+          "notifyManagement": true
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "start_progress",
+        "name": "Start Progress",
+        "from": "new",
+        "to": "in_progress",
+        "description": "Begin working on the ticket",
+        "requiredFields": ["assignee"],
+        "conditions": ["hasAssignee"],
+        "actions": ["assignToCurrentUser", "addComment", "startTimeTracking"]
+      },
+      {
+        "id": "start_rca",
+        "name": "Start RCA",
+        "from": "in_progress",
+        "to": "rca",
+        "description": "Begin Root Cause Analysis",
+        "requiredFields": ["rcaReason"],
+        "conditions": ["isRecurringIssue", "isHighSeverity"],
+        "actions": ["addComment", "notifyRCAteam"]
+      },
+      {
+        "id": "update_kb",
+        "name": "Update KB",
+        "from": "rca",
+        "to": "kb_update",
+        "description": "Update knowledge base with findings",
+        "requiredFields": ["rcaFindings", "preventionMeasures"],
+        "conditions": ["rcaComplete"],
+        "actions": ["addComment", "createKBArticle"]
+      },
+      {
+        "id": "resolve_issue",
+        "name": "Resolve Issue",
+        "from": "in_progress",
+        "to": "resolved",
+        "description": "Mark issue as resolved",
+        "requiredFields": ["resolution", "resolutionType"],
+        "conditions": ["hasResolution"],
+        "actions": ["addComment", "stopTimeTracking", "notifyUser"]
+      },
+      {
+        "id": "resolve_from_kb",
+        "name": "Resolve from KB",
+        "from": "kb_update",
+        "to": "resolved",
+        "description": "Resolve after KB update",
+        "requiredFields": ["resolution", "kbArticleLink"],
+        "conditions": ["kbUpdateComplete"],
+        "actions": ["addComment", "stopTimeTracking", "notifyUser"]
+      },
+      {
+        "id": "close_ticket",
+        "name": "Close Ticket",
+        "from": "resolved",
+        "to": "closed",
+        "description": "Close the ticket",
+        "requiredFields": ["userConfirmation"],
+        "conditions": ["userConfirmed"],
+        "actions": ["addComment", "archiveTicket"]
+      },
+      {
+        "id": "escalate_ticket",
+        "name": "Escalate",
+        "from": "in_progress",
+        "to": "escalated",
+        "description": "Escalate to higher level support",
+        "requiredFields": ["escalationReason", "escalationLevel"],
+        "conditions": ["slaBreach", "complexIssue"],
+        "actions": ["addComment", "notifyManagement", "assignToEscalationTeam"]
+      },
+      {
+        "id": "return_from_escalation",
+        "name": "Return from Escalation",
+        "from": "escalated",
+        "to": "in_progress",
+        "description": "Return ticket to original assignee",
+        "requiredFields": ["escalationResolution"],
+        "conditions": ["escalationComplete"],
+        "actions": ["addComment", "reassignToOriginal"]
+      },
+      {
+        "id": "reopen_ticket",
+        "name": "Reopen",
+        "from": "resolved",
+        "to": "in_progress",
+        "description": "Reopen resolved ticket",
+        "requiredFields": ["reopenReason"],
+        "conditions": ["userRequested", "issueNotResolved"],
+        "actions": ["addComment", "notifyAssignee"]
+      }
+    ],
+    "fields": [
+      {
+        "id": "assignee",
+        "name": "Assignee",
+        "type": "user",
+        "required": true,
+        "description": "Person assigned to work on this ticket"
+      },
+      {
+        "id": "priority",
+        "name": "Priority",
+        "type": "select",
+        "required": true,
+        "options": ["P1 - Critical", "P2 - High", "P3 - Medium", "P4 - Low"],
+        "description": "Ticket priority level"
+      },
+      {
+        "id": "severity",
+        "name": "Severity",
+        "type": "select",
+        "required": true,
+        "options": ["Critical", "High", "Medium", "Low"],
+        "description": "Business impact severity"
+      },
+      {
+        "id": "category",
+        "name": "Category",
+        "type": "select",
+        "required": true,
+        "options": ["API Issues", "File Transfer", "System Performance", "User Access", "Security", "Database", "Network", "Authentication"],
+        "description": "Issue category"
+      },
+      {
+        "id": "resolution",
+        "name": "Resolution",
+        "type": "textarea",
+        "required": true,
+        "description": "Detailed description of how the issue was resolved"
+      },
+      {
+        "id": "resolutionType",
+        "name": "Resolution Type",
+        "type": "select",
+        "required": true,
+        "options": ["Fixed", "Workaround", "User Error", "Duplicate", "Not Reproducible", "Enhancement"],
+        "description": "Type of resolution applied"
+      },
+      {
+        "id": "rcaReason",
+        "name": "RCA Reason",
+        "type": "textarea",
+        "required": false,
+        "description": "Reason for conducting Root Cause Analysis"
+      },
+      {
+        "id": "rcaFindings",
+        "name": "RCA Findings",
+        "type": "textarea",
+        "required": false,
+        "description": "Detailed findings from Root Cause Analysis"
+      },
+      {
+        "id": "preventionMeasures",
+        "name": "Prevention Measures",
+        "type": "textarea",
+        "required": false,
+        "description": "Measures to prevent recurrence of the issue"
+      },
+      {
+        "id": "kbArticleLink",
+        "name": "KB Article Link",
+        "type": "url",
+        "required": false,
+        "description": "Link to knowledge base article created"
+      },
+      {
+        "id": "escalationReason",
+        "name": "Escalation Reason",
+        "type": "textarea",
+        "required": false,
+        "description": "Reason for escalating the ticket"
+      },
+      {
+        "id": "escalationLevel",
+        "name": "Escalation Level",
+        "type": "select",
+        "required": false,
+        "options": ["Level 2", "Level 3", "Management", "Vendor"],
+        "description": "Level of escalation"
+      },
+      {
+        "id": "userConfirmation",
+        "name": "User Confirmation",
+        "type": "select",
+        "required": false,
+        "options": ["Confirmed", "Not Confirmed", "Pending"],
+        "description": "User confirmation of resolution"
+      },
+      {
+        "id": "reopenReason",
+        "name": "Reopen Reason",
+        "type": "textarea",
+        "required": false,
+        "description": "Reason for reopening the ticket"
+      }
+    ],
+    "rules": [
+      {
+        "name": "SLA Monitoring",
+        "description": "Monitor SLA compliance based on priority",
+        "conditions": {
+          "priority": "P1",
+          "timeInStatus": "4 hours"
+        },
+        "actions": ["notifyAssignee", "escalateToManager"]
+      },
+      {
+        "name": "RCA Trigger",
+        "description": "Trigger RCA for recurring issues",
+        "conditions": {
+          "recurringCount": 3,
+          "timeWindow": "30 days"
+        },
+        "actions": ["transitionToRCA", "notifyRCATeam"]
+      },
+      {
+        "name": "KB Update Required",
+        "description": "Require KB update for resolved issues",
+        "conditions": {
+          "resolutionType": "Fixed",
+          "category": ["API Issues", "File Transfer", "System Performance"]
+        },
+        "actions": ["transitionToKBUpdate", "notifyDocumentationTeam"]
+      }
+    ]
+  },
+  "kanbanBoard": {
+    "name": "SF Tech Support Kanban",
+    "columns": [
+      {
+        "name": "New",
+        "statuses": ["new"],
+        "wipLimit": null,
+        "color": "#007ACC"
+      },
+      {
+        "name": "In Progress",
+        "statuses": ["in_progress"],
+        "wipLimit": 10,
+        "color": "#FF9500"
+      },
+      {
+        "name": "RCA",
+        "statuses": ["rca"],
+        "wipLimit": 5,
+        "color": "#FF6B6B"
+      },
+      {
+        "name": "KB Update",
+        "statuses": ["kb_update"],
+        "wipLimit": 3,
+        "color": "#4ECDC4"
+      },
+      {
+        "name": "Resolved",
+        "statuses": ["resolved"],
+        "wipLimit": null,
+        "color": "#45B7D1"
+      },
+      {
+        "name": "Closed",
+        "statuses": ["closed"],
+        "wipLimit": null,
+        "color": "#96CEB4"
+      },
+      {
+        "name": "Escalated",
+        "statuses": ["escalated"],
+        "wipLimit": 2,
+        "color": "#FF4757"
+      }
+    ],
+    "filters": [
+      {
+        "name": "Priority",
+        "field": "priority",
+        "type": "select"
+      },
+      {
+        "name": "Category",
+        "field": "category",
+        "type": "select"
+      },
+      {
+        "name": "Assignee",
+        "field": "assignee",
+        "type": "user"
+      },
+      {
+        "name": "Created Date",
+        "field": "created",
+        "type": "date"
+      }
+    ]
+  }
+}

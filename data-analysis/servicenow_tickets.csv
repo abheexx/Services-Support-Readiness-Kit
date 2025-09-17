@@ -1,0 +1,201 @@
+Ticket_ID,Category,Severity,Priority,Status,Resolution_Time_Hours,Created_Date,Assignment_Group,Assigned_To,Platform
+INC0000001,File Transfer,P2,Medium,Escalated,19.32,2025-07-16,3,User50,Mac
+INC0000002,User Access,P4,Low,In Progress,77.15,2025-07-22,7,User45,Linux
+INC0000003,Network,P1,Low,In Progress,4.54,2025-08-26,2,User3,Mac
+INC0000004,API Issues,P2,Medium,Closed,4.9,2025-07-03,4,User48,Windows
+INC0000005,User Access,P4,High,New,52.35,2025-06-19,5,User2,Mac
+INC0000006,File Transfer,P1,Critical,Escalated,7.46,2025-08-05,6,User42,Linux
+INC0000007,Network,P4,Low,In Progress,18.26,2025-07-01,9,User47,Linux
+INC0000008,API Issues,P3,Low,Resolved,31.44,2025-08-23,2,User13,Linux
+INC0000009,User Access,P1,Low,Resolved,3.39,2025-09-07,9,User24,Windows
+INC0000010,System Performance,P2,Medium,Closed,21.91,2025-08-10,1,User42,Mac
+INC0000011,File Transfer,P4,Medium,In Progress,158.42,2025-07-14,6,User27,Mac
+INC0000012,Authentication,P4,Critical,Escalated,142.62,2025-08-21,5,User39,Linux
+INC0000013,API Issues,P3,Critical,In Progress,14.61,2025-09-12,10,User30,Linux
+INC0000014,Network,P2,High,Resolved,5.74,2025-08-31,4,User13,Mac
+INC0000015,Security,P2,Medium,Closed,22.51,2025-08-27,9,User40,Windows
+INC0000016,Security,P4,Critical,Escalated,19.15,2025-08-01,3,User21,Windows
+INC0000017,Network,P1,High,Escalated,4.49,2025-08-30,9,User26,Linux
+INC0000018,User Access,P1,Critical,In Progress,7.24,2025-08-15,9,User26,Windows
+INC0000019,System Performance,P3,High,Resolved,56.81,2025-08-23,6,User14,Mac
+INC0000020,User Access,P1,Medium,Closed,6.86,2025-08-23,5,User49,Windows
+INC0000021,System Performance,P3,Medium,Escalated,54.4,2025-08-27,1,User48,Windows
+INC0000022,Database,P1,Critical,New,2.25,2025-09-03,4,User22,Mac
+INC0000023,Authentication,P2,Low,In Progress,17.12,2025-06-19,1,User30,Windows
+INC0000024,User Access,P1,Critical,In Progress,5.69,2025-08-19,5,User34,Windows
+INC0000025,Authentication,P1,Low,Escalated,7.49,2025-06-28,10,User1,Linux
+INC0000026,System Performance,P2,Critical,In Progress,13.45,2025-07-18,2,User4,Windows
+INC0000027,Network,P2,High,New,14.23,2025-08-25,1,User45,Linux
+INC0000028,Network,P2,Low,New,23.19,2025-07-21,7,User23,Windows
+INC0000029,Security,P2,Low,Closed,13.93,2025-06-19,2,User44,Windows
+INC0000030,Network,P3,Low,Escalated,60.73,2025-09-13,8,User32,Windows
+INC0000031,System Performance,P4,Medium,In Progress,20.39,2025-07-24,2,User15,Mac
+INC0000032,API Issues,P2,Medium,Closed,13.27,2025-07-04,3,User16,Linux
+INC0000033,Security,P1,Low,Escalated,7.86,2025-09-15,4,User7,Linux
+INC0000034,Network,P2,Critical,New,8.4,2025-09-08,7,User40,Linux
+INC0000035,API Issues,P1,High,Escalated,7.16,2025-07-24,8,User37,Mac
+INC0000036,API Issues,P3,Medium,In Progress,38.26,2025-06-30,5,User48,Windows
+INC0000037,Database,P1,High,Escalated,2.29,2025-09-01,5,User36,Windows
+INC0000038,System Performance,P3,High,Escalated,33.32,2025-08-29,7,User1,Linux
+INC0000039,System Performance,P4,Critical,In Progress,146.23,2025-09-03,3,User13,Linux
+INC0000040,API Issues,P3,High,In Progress,14.45,2025-08-20,10,User14,Linux
+INC0000041,Authentication,P3,Low,New,57.87,2025-08-08,9,User35,Windows
+INC0000042,API Issues,P3,Low,In Progress,69.37,2025-06-23,9,User23,Mac
+INC0000043,Authentication,P2,Critical,Resolved,9.61,2025-07-09,6,User7,Mac
+INC0000044,File Transfer,P1,Low,Closed,3.02,2025-07-28,1,User21,Mac
+INC0000045,System Performance,P1,High,New,7.55,2025-09-04,1,User44,Mac
+INC0000046,Security,P4,High,Resolved,143.53,2025-07-09,7,User11,Linux
+INC0000047,Database,P4,Medium,Closed,123.46,2025-07-05,1,User34,Linux
+INC0000048,Security,P2,Medium,Closed,15.59,2025-07-22,10,User29,Linux
+INC0000049,Security,P4,Medium,Escalated,53.73,2025-07-27,4,User47,Linux
+INC0000050,Network,P3,Low,Closed,35.0,2025-07-26,6,User37,Windows
+INC0000051,Security,P1,Medium,In Progress,6.02,2025-09-09,7,User47,Windows
+INC0000052,Authentication,P2,High,Closed,10.61,2025-07-19,8,User41,Mac
+INC0000053,Network,P2,Medium,In Progress,5.56,2025-08-17,2,User13,Linux
+INC0000054,System Performance,P1,Low,Escalated,1.56,2025-06-27,5,User40,Linux
+INC0000055,File Transfer,P1,Low,Closed,4.14,2025-07-14,3,User47,Windows
+INC0000056,API Issues,P3,Medium,New,37.8,2025-07-20,8,User22,Linux
+INC0000057,File Transfer,P4,Critical,Escalated,164.54,2025-08-16,6,User29,Mac
+INC0000058,Database,P3,Critical,Escalated,27.42,2025-08-22,9,User7,Windows
+INC0000059,User Access,P2,High,Escalated,8.87,2025-07-29,10,User2,Linux
+INC0000060,Database,P1,Low,Resolved,6.55,2025-09-05,3,User3,Windows
+INC0000061,File Transfer,P1,High,Closed,1.55,2025-08-12,4,User42,Windows
+INC0000062,API Issues,P2,Medium,Escalated,13.16,2025-08-22,8,User35,Windows
+INC0000063,System Performance,P3,Critical,Escalated,51.97,2025-07-27,6,User1,Linux
+INC0000064,User Access,P4,Critical,Closed,30.75,2025-07-25,3,User12,Mac
+INC0000065,Security,P1,Critical,New,6.81,2025-09-17,9,User46,Windows
+INC0000066,Database,P2,Low,Escalated,21.82,2025-07-05,2,User10,Linux
+INC0000067,Network,P4,Medium,Closed,145.15,2025-06-24,10,User30,Linux
+INC0000068,System Performance,P2,High,In Progress,11.62,2025-07-07,9,User33,Mac
+INC0000069,Authentication,P4,Low,New,73.32,2025-08-25,5,User43,Windows
+INC0000070,File Transfer,P2,High,Resolved,10.27,2025-08-31,5,User24,Windows
+INC0000071,User Access,P1,Critical,Resolved,2.24,2025-07-08,4,User13,Windows
+INC0000072,Network,P3,High,Escalated,6.54,2025-07-19,5,User37,Linux
+INC0000073,File Transfer,P4,Critical,Resolved,101.61,2025-08-06,7,User45,Linux
+INC0000074,Security,P2,High,In Progress,14.44,2025-06-27,9,User28,Windows
+INC0000075,Authentication,P4,Critical,In Progress,20.28,2025-09-04,4,User35,Linux
+INC0000076,API Issues,P3,Low,Escalated,35.93,2025-07-31,10,User33,Windows
+INC0000077,Network,P3,Critical,Resolved,25.22,2025-09-05,3,User24,Windows
+INC0000078,System Performance,P2,High,New,4.68,2025-08-27,3,User33,Linux
+INC0000079,User Access,P3,Low,New,36.46,2025-07-19,6,User18,Linux
+INC0000080,Network,P1,Critical,New,4.47,2025-09-13,2,User25,Mac
+INC0000081,Network,P2,High,Resolved,15.93,2025-07-11,7,User50,Linux
+INC0000082,Security,P4,Medium,New,54.47,2025-07-29,8,User41,Mac
+INC0000083,File Transfer,P4,Critical,Closed,112.42,2025-06-26,9,User35,Mac
+INC0000084,API Issues,P2,Low,Resolved,17.25,2025-07-03,9,User14,Mac
+INC0000085,System Performance,P3,Critical,New,53.6,2025-06-29,8,User38,Windows
+INC0000086,System Performance,P4,Low,Resolved,31.41,2025-07-10,3,User11,Linux
+INC0000087,File Transfer,P1,Low,Escalated,5.26,2025-07-07,1,User23,Linux
+INC0000088,Network,P1,Medium,Resolved,4.36,2025-08-13,8,User10,Linux
+INC0000089,Security,P3,Low,Resolved,14.38,2025-07-04,2,User11,Linux
+INC0000090,Database,P1,High,New,7.39,2025-09-14,7,User22,Windows
+INC0000091,User Access,P3,Critical,Closed,5.21,2025-09-17,6,User18,Mac
+INC0000092,File Transfer,P1,Medium,Escalated,2.11,2025-07-06,5,User49,Mac
+INC0000093,Database,P2,Medium,Escalated,8.93,2025-07-02,3,User15,Windows
+INC0000094,Database,P1,High,Escalated,6.1,2025-08-30,6,User1,Windows
+INC0000095,Authentication,P3,High,New,66.25,2025-06-30,2,User4,Windows
+INC0000096,Database,P4,Critical,Resolved,114.54,2025-09-14,8,User2,Linux
+INC0000097,Authentication,P2,Low,Escalated,20.51,2025-08-21,4,User32,Mac
+INC0000098,API Issues,P2,High,Closed,10.36,2025-08-29,6,User38,Windows
+INC0000099,File Transfer,P3,Critical,In Progress,22.46,2025-09-17,6,User33,Mac
+INC0000100,Network,P3,Low,In Progress,17.0,2025-08-17,6,User12,Windows
+INC0000101,User Access,P4,Low,Escalated,29.79,2025-08-26,3,User32,Linux
+INC0000102,Network,P2,Critical,New,15.01,2025-09-09,6,User7,Linux
+INC0000103,User Access,P2,Low,In Progress,11.04,2025-08-04,9,User29,Mac
+INC0000104,Security,P4,High,In Progress,137.55,2025-09-15,2,User23,Windows
+INC0000105,File Transfer,P1,High,Resolved,3.36,2025-06-30,8,User12,Windows
+INC0000106,API Issues,P3,Low,Closed,40.57,2025-09-15,3,User6,Mac
+INC0000107,Security,P4,Critical,New,78.73,2025-08-29,6,User42,Windows
+INC0000108,Security,P2,High,Resolved,14.3,2025-08-15,7,User50,Linux
+INC0000109,User Access,P3,Low,Resolved,44.39,2025-08-13,9,User28,Windows
+INC0000110,File Transfer,P1,Low,Resolved,7.43,2025-07-31,5,User44,Mac
+INC0000111,API Issues,P3,High,New,6.64,2025-08-03,8,User2,Mac
+INC0000112,Security,P4,Critical,Closed,38.46,2025-07-16,4,User50,Windows
+INC0000113,File Transfer,P2,High,Resolved,13.39,2025-09-07,10,User28,Windows
+INC0000114,User Access,P1,Low,In Progress,4.97,2025-09-09,10,User18,Windows
+INC0000115,Database,P4,Low,Resolved,91.47,2025-09-12,2,User28,Mac
+INC0000116,Authentication,P3,Medium,In Progress,20.54,2025-08-09,8,User41,Mac
+INC0000117,Network,P1,High,Resolved,6.32,2025-07-15,9,User32,Windows
+INC0000118,Security,P4,High,Escalated,62.46,2025-09-11,2,User50,Linux
+INC0000119,Network,P3,High,Closed,65.96,2025-09-17,8,User43,Windows
+INC0000120,User Access,P1,Low,Closed,4.7,2025-08-01,6,User17,Mac
+INC0000121,Network,P1,Medium,Escalated,6.17,2025-08-27,2,User39,Mac
+INC0000122,System Performance,P4,Medium,Escalated,113.46,2025-06-23,7,User12,Windows
+INC0000123,Network,P1,High,Closed,6.07,2025-08-01,2,User41,Windows
+INC0000124,User Access,P2,Critical,Escalated,8.39,2025-06-28,9,User21,Windows
+INC0000125,Authentication,P1,Critical,In Progress,6.61,2025-09-16,2,User22,Mac
+INC0000126,System Performance,P1,Low,Resolved,5.5,2025-08-16,6,User32,Windows
+INC0000127,API Issues,P1,Medium,Escalated,2.66,2025-08-26,10,User20,Mac
+INC0000128,Authentication,P2,High,New,8.03,2025-07-08,3,User28,Windows
+INC0000129,User Access,P2,Critical,Resolved,5.53,2025-08-28,4,User14,Mac
+INC0000130,System Performance,P1,High,In Progress,7.93,2025-08-07,8,User31,Linux
+INC0000131,Database,P4,Low,Closed,27.84,2025-08-24,10,User8,Windows
+INC0000132,Security,P2,Critical,New,2.94,2025-08-11,10,User24,Windows
+INC0000133,User Access,P2,Low,In Progress,21.16,2025-07-03,8,User35,Linux
+INC0000134,Security,P3,High,Closed,61.68,2025-07-14,1,User41,Windows
+INC0000135,Security,P1,Critical,New,4.5,2025-09-17,1,User31,Mac
+INC0000136,Network,P2,Critical,Closed,12.15,2025-08-15,10,User1,Linux
+INC0000137,API Issues,P4,Low,In Progress,10.18,2025-08-10,10,User42,Mac
+INC0000138,Database,P4,Critical,Closed,99.05,2025-06-28,6,User1,Mac
+INC0000139,Security,P3,Medium,Escalated,60.02,2025-08-03,1,User11,Mac
+INC0000140,Authentication,P4,High,Closed,16.44,2025-07-31,9,User7,Mac
+INC0000141,Network,P4,Critical,Resolved,155.25,2025-07-21,10,User3,Linux
+INC0000142,API Issues,P1,Low,New,7.19,2025-08-08,10,User22,Windows
+INC0000143,API Issues,P3,Medium,Resolved,56.5,2025-08-21,3,User17,Windows
+INC0000144,API Issues,P1,Low,Resolved,3.98,2025-08-23,9,User2,Mac
+INC0000145,Network,P2,High,Escalated,16.79,2025-08-12,6,User32,Linux
+INC0000146,Database,P1,High,New,1.78,2025-07-02,4,User36,Linux
+INC0000147,File Transfer,P1,Medium,Resolved,7.34,2025-06-28,8,User31,Mac
+INC0000148,Security,P4,High,New,44.13,2025-09-03,1,User15,Mac
+INC0000149,System Performance,P1,High,New,5.18,2025-07-26,7,User9,Linux
+INC0000150,File Transfer,P4,Low,Escalated,74.81,2025-08-08,10,User22,Windows
+INC0000151,User Access,P2,High,In Progress,17.1,2025-06-24,10,User15,Linux
+INC0000152,API Issues,P2,Low,Resolved,5.83,2025-08-09,4,User35,Linux
+INC0000153,Security,P1,Low,New,3.52,2025-07-14,8,User30,Mac
+INC0000154,System Performance,P2,Critical,Resolved,6.93,2025-07-02,7,User28,Mac
+INC0000155,User Access,P1,High,New,1.78,2025-09-07,10,User11,Mac
+INC0000156,User Access,P4,Critical,Escalated,164.04,2025-07-08,9,User45,Mac
+INC0000157,Database,P2,High,Escalated,17.27,2025-07-30,5,User1,Windows
+INC0000158,API Issues,P1,High,Resolved,4.08,2025-09-09,9,User45,Mac
+INC0000159,API Issues,P1,Low,New,6.16,2025-07-03,4,User20,Mac
+INC0000160,User Access,P2,Low,Closed,20.15,2025-09-14,10,User6,Windows
+INC0000161,User Access,P2,Medium,Escalated,7.06,2025-08-27,9,User30,Windows
+INC0000162,File Transfer,P4,Medium,Closed,121.46,2025-07-31,4,User47,Mac
+INC0000163,Database,P2,High,Escalated,8.35,2025-09-07,6,User6,Windows
+INC0000164,Database,P4,Medium,Closed,78.8,2025-06-21,5,User38,Linux
+INC0000165,File Transfer,P3,Critical,Resolved,30.64,2025-07-14,8,User36,Mac
+INC0000166,Security,P3,Low,Escalated,6.9,2025-06-27,8,User1,Windows
+INC0000167,System Performance,P3,Low,New,66.44,2025-07-24,1,User27,Windows
+INC0000168,Authentication,P2,Medium,New,8.15,2025-08-08,8,User27,Linux
+INC0000169,API Issues,P4,Critical,Closed,151.7,2025-09-03,2,User5,Windows
+INC0000170,Database,P3,Low,Resolved,35.47,2025-07-11,6,User40,Linux
+INC0000171,API Issues,P4,Critical,In Progress,95.18,2025-07-05,8,User26,Windows
+INC0000172,User Access,P4,High,Closed,52.59,2025-06-27,2,User12,Windows
+INC0000173,File Transfer,P3,Medium,In Progress,31.75,2025-09-05,7,User24,Mac
+INC0000174,Security,P4,High,Escalated,134.77,2025-08-04,4,User45,Linux
+INC0000175,File Transfer,P4,High,Escalated,57.26,2025-08-02,8,User39,Linux
+INC0000176,Security,P2,High,Resolved,18.16,2025-07-30,9,User5,Mac
+INC0000177,Security,P2,High,Resolved,9.63,2025-08-29,3,User24,Linux
+INC0000178,Database,P1,Medium,New,1.78,2025-06-24,5,User13,Linux
+INC0000179,Security,P2,High,Escalated,23.91,2025-07-13,6,User47,Mac
+INC0000180,Authentication,P1,Low,In Progress,2.86,2025-09-01,3,User16,Mac
+INC0000181,System Performance,P2,Critical,New,3.85,2025-09-16,9,User3,Linux
+INC0000182,API Issues,P4,Low,Closed,131.47,2025-07-23,10,User28,Windows
+INC0000183,Authentication,P4,Critical,Resolved,108.48,2025-09-06,5,User47,Mac
+INC0000184,Authentication,P4,Medium,In Progress,55.92,2025-07-26,1,User31,Linux
+INC0000185,System Performance,P3,Critical,Closed,17.82,2025-07-26,1,User37,Windows
+INC0000186,API Issues,P1,Low,Escalated,2.73,2025-08-12,10,User20,Mac
+INC0000187,Network,P1,Low,In Progress,3.88,2025-09-05,6,User18,Mac
+INC0000188,Network,P1,Medium,Resolved,6.36,2025-09-12,8,User10,Windows
+INC0000189,Authentication,P2,Medium,In Progress,15.86,2025-08-11,5,User13,Windows
+INC0000190,User Access,P2,Critical,In Progress,13.77,2025-06-22,2,User22,Linux
+INC0000191,Security,P4,Medium,Closed,124.0,2025-07-07,10,User14,Mac
+INC0000192,Security,P1,Critical,In Progress,6.11,2025-08-28,10,User47,Windows
+INC0000193,System Performance,P1,Medium,New,7.53,2025-08-31,8,User49,Windows
+INC0000194,File Transfer,P2,Critical,Escalated,5.17,2025-06-21,2,User20,Mac
+INC0000195,API Issues,P4,Low,Escalated,11.37,2025-06-21,10,User3,Windows
+INC0000196,Database,P3,Medium,New,66.22,2025-06-27,2,User38,Linux
+INC0000197,System Performance,P1,Low,Escalated,4.95,2025-07-02,10,User16,Linux
+INC0000198,User Access,P1,Low,New,7.3,2025-07-09,10,User10,Linux
+INC0000199,Database,P2,Critical,Escalated,14.7,2025-06-20,5,User16,Linux
+INC0000200,Network,P1,Low,Resolved,4.95,2025-07-06,5,User49,Mac

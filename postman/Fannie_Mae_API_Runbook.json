@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "fannie-mae-api-runbook-2024",
+		"name": "Fannie Mae Single Family API Runbook",
+		"description": "Comprehensive API testing collection for Single Family Technology Services Support. Includes REST and SOAP endpoints with pre-configured tests for common error scenarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REST APIs",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Valid Authentication",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/auth/login",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "auth", "login"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test('Response has access token', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('access_token');",
+											"    pm.environment.set('access_token', jsonData.access_token);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Invalid Credentials (401)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"invalid_user\",\n  \"password\": \"wrong_password\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/auth/login",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "auth", "login"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 401 Unauthorized', function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"pm.test('Error message indicates authentication failure', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('error');",
+											"    pm.expect(jsonData.error).to.include('Invalid credentials');",
+											"});",
+											"",
+											"pm.test('Response time is under 5 seconds', function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Single Family Data APIs",
+					"item": [
+						{
+							"name": "Get Loan Data (Valid)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/loans/{{loan_id}}",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "loans", "{{loan_id}}"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test('Response has required loan fields', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('loan_id');",
+											"    pm.expect(jsonData).to.have.property('borrower_name');",
+											"    pm.expect(jsonData).to.have.property('loan_amount');",
+											"    pm.expect(jsonData).to.have.property('status');",
+											"});",
+											"",
+											"pm.test('Response time is under 3 seconds', function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get Loan Data (403 Forbidden)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer invalid_token"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/loans/{{loan_id}}",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "loans", "{{loan_id}}"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 403 Forbidden', function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test('Error message indicates insufficient permissions', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('error');",
+											"    pm.expect(jsonData.error).to.include('Forbidden');",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get Loan Data (500 Internal Server Error)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/loans/error_trigger",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "loans", "error_trigger"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 500 Internal Server Error', function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"",
+											"pm.test('Error response has proper structure', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('error');",
+											"    pm.expect(jsonData).to.have.property('timestamp');",
+											"    pm.expect(jsonData).to.have.property('request_id');",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "API Gateway Health Checks",
+					"item": [
+						{
+							"name": "Gateway Health Check",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "{{base_url}}/health",
+									"host": ["{{base_url}}"],
+									"path": ["health"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test('Health check response is valid', function () {",
+											"    const jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('status');",
+											"    pm.expect(jsonData.status).to.eql('UP');",
+											"});",
+											"",
+											"pm.test('Response time is under 1 second', function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Gateway Timeout Test",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "{{base_url}}/api/v1/slow-endpoint",
+									"host": ["{{base_url}}"],
+									"path": ["api", "v1", "slow-endpoint"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Request times out or returns 504', function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([504, 408]);",
+											"});",
+											"",
+											"pm.test('Response time exceeds 30 seconds', function () {",
+											"    pm.expect(pm.response.responseTime).to.be.above(30000);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SOAP APIs",
+			"item": [
+				{
+					"name": "Loan Processing SOAP Service",
+					"item": [
+						{
+							"name": "Valid SOAP Request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/xml; charset=utf-8"
+									},
+									{
+										"key": "SOAPAction",
+										"value": "processLoan"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Header>\n    <AuthHeader>\n      <Username>{{username}}</Username>\n      <Password>{{password}}</Password>\n    </AuthHeader>\n  </soap:Header>\n  <soap:Body>\n    <ProcessLoanRequest>\n      <LoanId>{{loan_id}}</LoanId>\n      <Action>VALIDATE</Action>\n    </ProcessLoanRequest>\n  </soap:Body>\n</soap:Envelope>"
+								},
+								"url": {
+									"raw": "{{soap_base_url}}/LoanProcessingService.asmx",
+									"host": ["{{soap_base_url}}"],
+									"path": ["LoanProcessingService.asmx"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test('Response is valid SOAP XML', function () {",
+											"    pm.expect(pm.response.text).to.include('soap:Envelope');",
+											"    pm.expect(pm.response.text).to.include('ProcessLoanResponse');",
+											"});",
+											"",
+											"pm.test('No SOAP fault in response', function () {",
+											"    pm.expect(pm.response.text).to.not.include('soap:Fault');",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "SOAP Schema Validation Error",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/xml; charset=utf-8"
+									},
+									{
+										"key": "SOAPAction",
+										"value": "processLoan"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <InvalidRequest>\n      <WrongField>invalid_data</WrongField>\n    </InvalidRequest>\n  </soap:Body>\n</soap:Envelope>"
+								},
+								"url": {
+									"raw": "{{soap_base_url}}/LoanProcessingService.asmx",
+									"host": ["{{soap_base_url}}"],
+									"path": ["LoanProcessingService.asmx"]
+								}
+							},
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code is 400 or 500', function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400, 500]);",
+											"});",
+											"",
+											"pm.test('Response contains SOAP fault', function () {",
+											"    pm.expect(pm.response.text).to.include('soap:Fault');",
+											"});",
+											"",
+											"pm.test('Fault contains validation error', function () {",
+											"    pm.expect(pm.response.text).to.include('faultstring');",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set default values if not already set",
+					"if (!pm.environment.get('base_url')) {",
+					"    pm.environment.set('base_url', 'https://api.fanniemae.com');",
+					"}",
+					"if (!pm.environment.get('soap_base_url')) {",
+					"    pm.environment.set('soap_base_url', 'https://services.fanniemae.com');",
+					"}",
+					"if (!pm.environment.get('loan_id')) {",
+					"    pm.environment.set('loan_id', '123456789');",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api.fanniemae.com",
+			"type": "string"
+		},
+		{
+			"key": "soap_base_url",
+			"value": "https://services.fanniemae.com",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "your_username",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "your_password",
+			"type": "string"
+		},
+		{
+			"key": "loan_id",
+			"value": "123456789",
+			"type": "string"
+		}
+	]
+}

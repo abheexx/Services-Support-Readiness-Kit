@@ -37,7 +37,7 @@ Kit/
 3. Run the Python script to analyze ticket data patterns
 4. Follow the onboarding checklist for new team members
 
-## Role-Specific Features
+## Specific Features
 - Pre-configured API tests for common error scenarios (401, 403, 500)
 - SFTP connectivity troubleshooting guides
 - ServiceNow ticket analysis and reporting
